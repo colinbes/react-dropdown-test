@@ -13,7 +13,6 @@ interface Props {
 
 const CategoryFiltersTest = (props: Props) => {
   const [selected1, setSelected1] = useState<string[]>([])
-  const isFocused = useRef(false);
 
   const renderItem = (item: IndexedValue) => {
     return (
@@ -40,13 +39,8 @@ const CategoryFiltersTest = (props: Props) => {
       search
       inside
       searchPlaceholder="Search..."
-      onChange={(items: string[]) => {
-        setSelected1(items);
-      }}
-      onFocus={() => isFocused.current=true}
-      onBlur={() => isFocused.current=false}
+      onChange={setSelected1}
       renderItem={renderItem}
-
       renderSelectedItem={(item, unSelect) => (
         <View><Text>{item.label}</Text></View>
       )}
@@ -55,20 +49,6 @@ const CategoryFiltersTest = (props: Props) => {
 }
 
 const styles = StyleSheet.create({
-  dropdownOriginal: {
-    marginTop: 32,
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
-  },
   dropdown: {
     marginTop: 12,
     minHeight: 50,
